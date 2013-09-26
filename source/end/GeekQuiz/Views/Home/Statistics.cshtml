@@ -1,0 +1,39 @@
+﻿@model GeekQuiz.ViewModels.StatisticsViewModel
+@{
+    ViewBag.Title = "Trivia Statistics";
+}
+
+@section Scripts {
+    <script src="@Url.Content("~/Scripts/jquery.signalR-2.0.0-rc1.min.js")"></script>
+    <script src="@Url.Content("~/signalr/hubs")" type="text/javascript"></script>
+    @Scripts.Render("~/Scripts/flotr2.js")
+    @Scripts.Render("~/Scripts/statistics.js")
+    <script>
+        var statisticsData = {
+            CorrectAnswers: parseInt('@Model.CorrectAnswers'),
+            IncorrectAnswers: parseInt('@Model.IncorrectAnswers'),
+            TotalAnswers: parseInt('@Model.TotalAnswers'),
+            CorrectAnswersAverage: parseFloat('@Model.CorrectAnswersAverage'),
+            IncorrectAnswersAverage: parseFloat('@Model.IncorrectAnswersAverage'),
+            TotalAnswersAverage: parseFloat('@Model.TotalAnswersAverage')
+        };
+
+        showCharts(statisticsData);
+
+        var connection = $.hubConnection();
+        var hub = connection.createHubProxy("StatisticsHub");
+        hub.on("updateStatistics", function (statistics) {
+            statisticsData = statistics;
+            $("#correctAnswersCounter").text(statistics.CorrectAnswers);
+            $("#incorrectAnswersCounter").text(statistics.IncorrectAnswers);
+
+            showCharts(statisticsData);
+        });
+
+        connection.start({ transport: ['websockets', 'foreverFrame', 'longPolling'] });
+
+        $(window).bind("resize", function () {
+            showCharts(statisticsData);
+        }).trigger("resize");
+    </script>
+}
