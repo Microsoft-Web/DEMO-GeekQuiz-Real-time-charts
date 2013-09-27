@@ -49,11 +49,15 @@ This demo is composed of the following segments:
 
 	![updateStatistics](Images/updatestatistics.png?raw=true)
 
+	> **Speaking point:** Explain that this takes advantage of C# `dynamic` type and results in events with the name of the method, to which clients can listen.
+
 1. Click `NotifyUpdates` and press **SHIFT + F12** to find all references to the method.
 
 1. Double-click the `await this.statisticsService.NotifyUpdates();` reference in the **Find Symbol Results** window.
 
 	![NotifyUpdatesReference](Images/notifyupdatesreference.png?raw=true)
+
+	> **Speaking point:** We are updating the stats for all clients every time a question is answered. If we were handling a large number of answers and clients simultaneously we could batch updates.
 
 1. Press **CTRL + ,**, type _Statistics.cshtml_ and press **Enter**.
 
@@ -66,6 +70,8 @@ This demo is composed of the following segments:
 1. Highlight the code that adds the listener for the `"updateStatistics"` event.
 
 	![updateStatisticsListener](Images/updatestatisticslistener.png?raw=true)
+
+	> **Speaking point:** Note that the event we are listening to has the same name as the method we invoke when updating the statistics.
 
 1. Highlight the `connection.start();` line.
 
