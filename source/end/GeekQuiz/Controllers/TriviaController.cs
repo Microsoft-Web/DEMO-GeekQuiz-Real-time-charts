@@ -16,12 +16,14 @@ namespace GeekQuiz.Controllers
         private TriviaContext db;
         private QuestionsService questionsService;
         private AnswersService answersService;
+        private StatisticsService statisticsService;
 
         public TriviaController()
         {
             this.db = new TriviaContext();
             this.questionsService = new QuestionsService(db);
             this.answersService = new AnswersService(db);
+            this.statisticsService = new StatisticsService(db);
         }
 
         public async Task<TriviaQuestion> Get()
@@ -46,6 +48,8 @@ namespace GeekQuiz.Controllers
                 answer.UserId = User.Identity.Name;
 
                 var isCorrect = await this.answersService.StoreAsync(answer);
+
+                await this.statisticsService.NotifyUpdates();
 
                 return Request.CreateResponse(HttpStatusCode.Created, isCorrect);
             }
