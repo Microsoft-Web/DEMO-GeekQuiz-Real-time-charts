@@ -1,4 +1,4 @@
-﻿# Building a SPA interface using Ember.js #
+﻿# Real-time charts in the GeekQuiz application #
 
 ## Demo ##
 
