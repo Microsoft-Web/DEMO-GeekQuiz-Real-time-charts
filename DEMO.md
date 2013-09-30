@@ -43,11 +43,15 @@ This demo is composed of the following segments:
 
 1. Select the `var hubContext = GlobalHost.ConnectionManager.GetHubContext<StatisticsHub>();` as shown in the following figure.
 
-	![GetHubContext](Images/gethubcontext.png?raw=true)
+	![Selecting the call to GetHubContext](Images/gethubcontext.png?raw=true "Selecting the call to GetHubContext")
+
+	_Selecting the call to GetHubContext_
 
 1. Highlight the `updateStatistics` method call.
 
-	![updateStatistics](Images/updatestatistics.png?raw=true)
+	![Highlighting the updateStatistics method call](Images/updatestatistics.png?raw=true "Highlighting the updateStatistics method call")
+
+	_Highlighting the updateStatistics method call_
 
 	> **Speaking point:** Explain that this takes advantage of C# `dynamic` type and results in events with the name of the method, to which clients can listen.
 
@@ -55,7 +59,9 @@ This demo is composed of the following segments:
 
 1. Double-click the `await this.statisticsService.NotifyUpdates();` reference in the **Find Symbol Results** window.
 
-	![NotifyUpdatesReference](Images/notifyupdatesreference.png?raw=true)
+	![Navigating to the NotifyUpdates caller](Images/notifyupdatesreference.png?raw=true "Navigating to the NotifyUpdates caller")
+
+	_Navigating to the NotifyUpdates caller_
 
 	> **Speaking point:** We are updating the stats for all clients every time a question is answered. If we were handling a large number of answers and clients simultaneously we could batch updates.
 
@@ -65,11 +71,15 @@ This demo is composed of the following segments:
 
 1. Highlight the `var hub = connection.createHubProxy("StatisticsHub");` line as shown in the following figure.
 
-	![CreateHubProxy](Images/createhubproxy.png?raw=true)
+	![Highlighting the call to createHubProxy](Images/createhubproxy.png?raw=true "Highlighting the call to createHubProxy")
+
+	_Highlighting the call to createHubProxy_
 
 1. Highlight the code that adds the listener for the `"updateStatistics"` event.
 
-	![updateStatisticsListener](Images/updatestatisticslistener.png?raw=true)
+	![Highlighting the updateStatistics listener code](Images/updatestatisticslistener.png?raw=true "Highlighting the updateStatistics listener code")
+
+	_Highlighting the updateStatistics listener code_
 
 	> **Speaking point:** Note that the event we are listening to has the same name as the method we invoke when updating the statistics.
 
@@ -83,13 +93,17 @@ This demo is composed of the following segments:
 
 1. If prompted to log-in, do so.
 
-1. Once the site has started, open a new browser window, and **/Home/Statistics**.
+1. Once the site has started, open a new browser window, and navigate to **/Home/Statistics**.
 
-	![Statistics](Images/statistics.png?raw=true)
+	![Navigating to the statistics view](Images/statistics.png?raw=true "Navigating to the statistics view")
+
+	_Navigating to the statistics view_
 
 1. Place both windows side by side.
 
 1. Answer questions in one window. The charts and numbers in the other one will update automatically.
 
-	![Automatic Update](Images/automatic-update.png?raw=true)
+	![Showing how charts and numbers are automatically updated](Images/automatic-update.png?raw=true "Showing how charts and numbers are automatically updated")
+
+	_Showing how charts and numbers are automatically updated_
 
