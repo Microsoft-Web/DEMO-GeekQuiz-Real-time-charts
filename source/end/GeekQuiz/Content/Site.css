@@ -73,3 +73,7 @@ div.incorrect p {
     height: 300px;
     margin: 8px auto;
 }
+
+.btn {
+    border-radius: 0;
+}
