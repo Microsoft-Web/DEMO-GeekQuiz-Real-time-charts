@@ -4,15 +4,15 @@
 ---
 <a name="Overview" />
 ## Overview ##
-This demo shows the SignalR code running the GeekQuiz realtime stats.
-
-1.	Show StatisticsHub.cs and StatisticsService.cs.
-1.	Explain how hub pushes updates to Statistics.cshtml.
-1.	Demonstrate realtime updates to charts.
+This demo shows how you can leverage SignalR to see realtime statistics of a website.
 
 <a id="goals" />
 ### Goals ###
-In this demo, you will see how to:
+In this demo, you will see how:
+
+1. Statistics are generated in the StatisticsService
+1. SignalR Hub pushes updates to the front end (Statistics.cshtml)
+1. To display realtime updates as charts
 
 <a name="technologies" />
 ### Key Technologies ###
@@ -114,3 +114,11 @@ This demo is composed of the following segments:
 
 	_Showing how charts and numbers are automatically updated_
 
+
+---
+<a name="Summary" />
+## Summary ##
+
+By completing this demo you should have understood how you can leverage SignalR to push realitme statistics to a page in a web site.
+
+---
